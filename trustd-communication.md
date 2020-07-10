@@ -2,7 +2,7 @@
 
 ## Node Join Flow
 
-```mermaid
+```mermaid!
 sequenceDiagram
     participant User
     participant Node
