@@ -32,3 +32,25 @@
 #172 79.10     --- PASS: TestFollowSuite/TestStreamingWithSomeHead (0.15s)
 #172 79.10 FAIL
 ```
+
+## Containerd.RunTwice
+
+```
+#172 21.89 === RUN   TestContainerdSuite/TestRunTwice
+#172 21.89 2020/07/10 18:57:24 state Running: Started task 036de7a9-f667-48e8-905f-216233980f94 (PID 4964) for container 036de7a9-f667-48e8-905f-216233980f94
+#172 21.89     TestContainerdSuite/TestRunTwice: containerd_test.go:179:
+#172 21.89         	Error Trace:	containerd_test.go:179
+#172 21.89         	Error:      	Received unexpected error:
+#172 21.89         	            	failed to create task: "036de7a9-f667-48e8-905f-216233980f94": dial unix \00/containerd-shim/f88fff9fe9795db4229846b09b2da816f6bd981b8112345486ff3b5653892920.sock: connect: connection refused: unknown
+#172 21.89         	Test:       	TestContainerdSuite/TestRunTwice
+#172 21.89 --- FAIL: TestContainerdSuite (6.62s)
+#172 21.89     --- PASS: TestContainerdSuite/TestContainerCleanup (0.92s)
+#172 21.89     --- PASS: TestContainerdSuite/TestImportFail (0.54s)
+#172 21.89     --- PASS: TestContainerdSuite/TestImportSuccess (0.45s)
+#172 21.89     --- PASS: TestContainerdSuite/TestRunLogs (0.26s)
+#172 21.89     --- PASS: TestContainerdSuite/TestRunSuccess (0.31s)
+#172 21.89     --- FAIL: TestContainerdSuite/TestRunTwice (0.39s)
+#172 21.89     --- PASS: TestContainerdSuite/TestStopFailingAndRestarting (1.61s)
+#172 21.89     --- PASS: TestContainerdSuite/TestStopSigKill (0.95s)
+#172 21.89 FAIL
+```
