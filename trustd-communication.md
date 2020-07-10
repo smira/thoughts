@@ -1,6 +1,6 @@
 # Trustd Communication
 
-Node join flow:
+## Node Join Flow
 
 ```mermaid
 sequenceDiagram
