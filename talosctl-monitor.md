@@ -17,3 +17,12 @@ Alternatives:
 
 * prometheus-exporter
 * k8s metrics
+
+PoC:
+
+* implement load-avg, CPU & memory stats APIs
+* implement hostname API (?) (or read `/etc/hostname`)
+* build first iteration of `talosctl monitor` via the APIs
+  * arhitecture might be that there's a node monitoring thread which pulls down stats each X seconds and pushes them as a huge struct to the channel
+  * UI listens on the channel an updates the representation
+  * we could put additional stuff on the channel in between (e.g. aggregate across nodes).
