@@ -54,3 +54,26 @@
 #172 21.89     --- PASS: TestContainerdSuite/TestStopSigKill (0.95s)
 #172 21.89 FAIL
 ```
+
+## TestFollowSuite/TestDeleted
+
+```
+#167 97.51 === RUN   TestFollowSuite
+#167 97.51 === RUN   TestFollowSuite/TestDeleted
+#167 97.51     follow_test.go:228:
+#167 97.51         	Error Trace:	follow_test.go:228
+#167 97.51         	Error:      	Not equal:
+#167 97.51         	            	expected: []byte{0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e, 0x6f}
+#167 97.51         	            	actual  : []byte{0x61, 0x62, 0x63}
+#167 97.51
+#167 97.51         	            	Diff:
+#167 97.51         	            	--- Expected
+#167 97.51         	            	+++ Actual
+#167 97.51         	            	@@ -1,3 +1,3 @@
+#167 97.51         	            	-([]uint8) (len=15) {
+#167 97.51         	            	- 00000000  61 62 63 64 65 66 67 68  69 6a 6b 6c 6d 6e 6f     |abcdefghijklmno|
+#167 97.51         	            	+([]uint8) (len=3) {
+#167 97.51         	            	+ 00000000  61 62 63                                          |abc|
+#167 97.51         	            	 }
+#167 97.51         	Test:       	TestFollowSuite/TestDeleted
+```

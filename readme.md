@@ -8,6 +8,10 @@
 - [[disk-encryption]] - everything about Talos disk encryption
 - [[next-meeting]] - notes for the next meeting
 
+## Engineering Notes
+
+- [[test-commands]] - useful commands while developing Talos
+
 ## To be categorised
 
 - [[trustd-communication]]
@@ -21,6 +25,7 @@
 [todo]: todo "Todo"
 [disk-encryption]: disk-encryption "Disk Encryption"
 [next-meeting]: next-meeting "Next Meeting Notes"
+[test-commands]: test-commands "Commands to launch tests"
 [trustd-communication]: trustd-communication "Trustd Communication"
 [flakes]: flakes "Flakes"
 [talosctl-monitor]: talosctl-monitor "Talosctl monitor"
