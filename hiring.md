@@ -1,6 +1,4 @@
-# Makefile Dockerfile
-
-Building from templates, inflection from source tree.
+# Hiring
 
 * automation/tooling
 * culture
