@@ -1,5 +1,11 @@
 # Commands to launch tests
 
+## Local buildx with local registry support
+
+```sh
+ docker buildx create --driver docker-container  --driver-opt network=host --name local1 --buildkitd-flags '--allow-insecure-entitlement security.insecure' --use
+```
+
 ## Create cluster
 
 With [registry mirrors](https://www.talos.dev/docs/v0.6/en/guides/local/registry-cache):
@@ -32,5 +38,13 @@ Only specific tests:
 ## Provision test
 
 ```sh
-$ sudo _out/integration-test-provision-linux-amd64 -test.v -talos.crashdump=false -talos.provision.registry-mirror docker.io=http://172.21.0.1:5000,k8s.gcr.io=http://172.21.0.1:5001,quay.io=http://172.21.0.1:5002,gcr.io=http://172.21.0.1:5003 -talos.talosctlpath=$PWD/_out/talosctl-linux-amd64
+$ sudo -E _out/integration-test-provision-linux-amd64 -test.v -talos.crashdump=false -talos.provision.registry-mirror docker.io=http://172.21.0.1:5000,k8s.gcr.io=http://172.21.0.1:5001,quay.io=http://172.21.0.1:5002,gcr.io=http://172.21.0.1:5003 -talos.talosctlpath=$PWD/_out/talosctl-linux-amd64
+```
+
+##  Sfyra
+
+```sh
+(cd ../talos; python3 -m http.server 8000 --bind 172.17.0.1)
+
+(cd ../talos/; sudo -E ../sfyra/_out/integration-test -skip-teardown -registry-mirrors docker.io=http://172.24.0.1:5000,k8s.gcr.io=http://172.24.0.1:5001,quay.io=http://172.24.0.1:5002,gcr.io=http://172.24.0.1:5003 -talos-kernel-url http://172.17.0.1:8000/_out/vmlinuz -talos-initrd-url http://172.17.0.1:8000/_out/initramfs.xz -nodes 4 -test.v)
 ```
