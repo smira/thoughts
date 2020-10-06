@@ -41,10 +41,21 @@ Only specific tests:
 $ sudo -E _out/integration-test-provision-linux-amd64 -test.v -talos.crashdump=false -talos.provision.registry-mirror docker.io=http://172.21.0.1:5000,k8s.gcr.io=http://172.21.0.1:5001,quay.io=http://172.21.0.1:5002,gcr.io=http://172.21.0.1:5003 -talos.talosctlpath=$PWD/_out/talosctl-linux-amd64
 ```
 
-##  Sfyra
+##  Sfyra/Sidero
 
 ```sh
 (cd ../talos; python3 -m http.server 8000 --bind 172.17.0.1)
 
 (cd ../talos/; sudo -E ../sfyra/_out/integration-test -skip-teardown -registry-mirrors docker.io=http://172.24.0.1:5000,k8s.gcr.io=http://172.24.0.1:5001,quay.io=http://172.24.0.1:5002,gcr.io=http://172.24.0.1:5003 -talos-kernel-url http://172.17.0.1:8000/_out/vmlinuz -talos-initrd-url http://172.17.0.1:8000/_out/initramfs.xz -nodes 4 -test.v)
+```
+
+```sh
+REGISTRY_MIRROR_FLAGS="-registry-mirrors docker.io=http://172.24.0.1:5000,k8s.gcr.io=http://172.24.0.1:5001,quay.io=http://172.24.0.1:5002,gcr.io=http://172.24.0.1:5003,ghcr.io=http://172.24.0.1:5004" make run-sfyra USERNAME=smira
+```
+
+Sfyra incremental:
+
+```sh
+(cd ../talos/; sudo -E ../sidero/_out/sfyra -skip-teardown -registry-mirrors docker.io=http://172.24.0.1:5000,k8s.gcr.io=http://172.24.0.1:5001,quay.io=http://172.24.0.1:5002,gcr.io=http://172.24.0.1:5003,ghcr.io=http://172.24.0.1:5004 -talos-kernel-url http://172.17.0.1:8000/_out/vmlinuz -talos-initrd-url http://172.17.0.1:8000/_out/initramfs.xz -management-nodes 4 -test.v -c
+lusterctl-config ~/.cluster-api/clusterctl.sfyra.yaml)
 ```
