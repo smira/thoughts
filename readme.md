@@ -11,6 +11,8 @@
 ## Engineering Notes
 
 - [[test-commands]] - useful commands while developing Talos
+- [[talks]] - engineering tech talks
+- [[discussion]] - to be discussed
 
 ## To be categorised
 
@@ -26,6 +28,8 @@
 [disk-encryption]: disk-encryption "Disk Encryption"
 [next-meeting]: next-meeting "Next Meeting Notes"
 [test-commands]: test-commands "Commands to launch tests"
+[talks]: talks "Talks"
+[discussion]: discussion "Discussion"
 [trustd-communication]: trustd-communication "Trustd Communication"
 [flakes]: flakes "Flakes"
 [talosctl-monitor]: talosctl-monitor "Talosctl monitor"

@@ -8,10 +8,11 @@
 
 ## Create cluster
 
-With [registry mirrors](https://www.talos.dev/docs/v0.6/en/guides/local/registry-cache):
+With [registry mirrors](https://www.talos.dev/docs/v0.6/en/guides/local/registry-cache), booting always from local
+`initramfs` (only `make initramfs` required after updates):
 
 ```sh
-$ sudo -E _out/talosctl-linux-amd64 cluster create --provisioner=qemu --cidr=172.20.0.0/24 --registry-mirror docker.io=http://172.20.0.1:5000 --registry-mirror k8s.gcr.io=http://172.20.0.1:5001 --registry-mirror quay.io=http://172.20.0.1:5002 --registry-mirror gcr.io=http://172.17.0.4:5000 --install-image=docker.io/autonomy/installer:v0.6.0-alpha.6 --cpus 2 --memory 2048 --masters 3 --workers 1 --with-init-node=false --with-bootloader=false
+$ sudo -E _out/talosctl-linux-amd64 cluster create --provisioner=qemu --cidr=172.20.0.0/24 --registry-mirror docker.io=http://172.20.0.1:5000 --registry-mirror k8s.gcr.io=http://172.20.0.1:5001 --registry-mirror quay.io=http://172.20.0.1:5002 --registry-mirror gcr.io=http://172.17.0.1:5003 --registry-mirror gchr.io=http://172.17.0.1:5004 --install-image=ghcr.io/talos-systems/installer:v0.8.1 --cpus 2 --memory 2048 --masters 3 --workers 1 --with-bootloader=false
 ```
 
 ## Integration test (qemu)
@@ -38,7 +39,7 @@ Only specific tests:
 ## Provision test
 
 ```sh
-$ sudo -E _out/integration-test-provision-linux-amd64 -test.v -talos.crashdump=false -talos.provision.registry-mirror docker.io=http://172.21.0.1:5000,k8s.gcr.io=http://172.21.0.1:5001,quay.io=http://172.21.0.1:5002,gcr.io=http://172.21.0.1:5003 -talos.talosctlpath=$PWD/_out/talosctl-linux-amd64
+$ sudo -E _out/integration-test-provision-linux-amd64 -test.v -talos.crashdump=false -talos.provision.registry-mirror docker.io=http://172.21.0.1:5000,k8s.gcr.io=http://172.21.0.1:5001,quay.io=http://172.21.0.1:5002,gcr.io=http://172.21.0.1:5003,ghcr.io=http://172.21.0.1:5004 -talos.talosctlpath=$PWD/_out/talosctl-linux-amd64
 ```
 
 ##  Sfyra/Sidero
@@ -46,7 +47,7 @@ $ sudo -E _out/integration-test-provision-linux-amd64 -test.v -talos.crashdump=f
 ```sh
 (cd ../talos; python3 -m http.server 8000 --bind 172.17.0.1)
 
-(cd ../talos/; sudo -E ../sfyra/_out/integration-test -skip-teardown -registry-mirrors docker.io=http://172.24.0.1:5000,k8s.gcr.io=http://172.24.0.1:5001,quay.io=http://172.24.0.1:5002,gcr.io=http://172.24.0.1:5003 -talos-kernel-url http://172.17.0.1:8000/_out/vmlinuz -talos-initrd-url http://172.17.0.1:8000/_out/initramfs.xz -nodes 4 -test.v)
+(cd ../talos/; sudo -E ../sfyra/_out/integration-test -skip-teardown -registry-mirrors docker.io=http://172.24.0.1:5000,k8s.gcr.io=http://172.24.0.1:5001,quay.io=http://172.24.0.1:5002,gcr.io=http://172.24.0.1:5003,ghcr.io=http://172.21.0.1:5004 -talos-kernel-url http://172.17.0.1:8000/_out/vmlinuz -talos-initrd-url http://172.17.0.1:8000/_out/initramfs.xz -nodes 4 -test.v)
 ```
 
 ```sh
@@ -56,6 +57,5 @@ REGISTRY_MIRROR_FLAGS="-registry-mirrors docker.io=http://172.24.0.1:5000,k8s.gc
 Sfyra incremental:
 
 ```sh
-(cd ../talos/; sudo -E ../sidero/_out/sfyra -skip-teardown -registry-mirrors docker.io=http://172.24.0.1:5000,k8s.gcr.io=http://172.24.0.1:5001,quay.io=http://172.24.0.1:5002,gcr.io=http://172.24.0.1:5003,ghcr.io=http://172.24.0.1:5004 -talos-kernel-url http://172.17.0.1:8000/_out/vmlinuz -talos-initrd-url http://172.17.0.1:8000/_out/initramfs.xz -management-nodes 4 -test.v -c
-lusterctl-config ~/.cluster-api/clusterctl.sfyra.yaml)
+(cd ../talos/; sudo -E ../sidero/_out/sfyra -skip-teardown -registry-mirrors docker.io=http://172.24.0.1:5000,k8s.gcr.io=http://172.24.0.1:5001,quay.io=http://172.24.0.1:5002,gcr.io=http://172.24.0.1:5003,ghcr.io=http://172.24.0.1:5004 -talos-kernel-url http://172.17.0.1:8000/_out/vmlinuz -talos-initrd-url http://172.17.0.1:8000/_out/initramfs.xz -management-nodes 4 -test.v -clusterctl-config ~/.cluster-api/clusterctl.sfyra.yaml)
 ```
