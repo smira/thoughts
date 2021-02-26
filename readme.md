@@ -13,6 +13,7 @@
 - [[test-commands]] - useful commands while developing Talos
 - [[talks]] - engineering tech talks
 - [[discussion]] - to be discussed
+- [[meeting-2021-02-26]]
 
 ## To be categorised
 
@@ -30,6 +31,7 @@
 [test-commands]: test-commands "Commands to launch tests"
 [talks]: talks "Talks"
 [discussion]: discussion "Discussion"
+[meeting-2021-02-26]: meeting-2021-02-26 "Topics to discuss"
 [trustd-communication]: trustd-communication "Trustd Communication"
 [flakes]: flakes "Flakes"
 [talosctl-monitor]: talosctl-monitor "Talosctl monitor"
